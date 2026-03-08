@@ -1,0 +1,13 @@
+{
+  "itemGroup.iawezlord": "Example Mod Tab",
+  "block.iawezlord.example_block": "Example Block",
+  "item.iawezlord.example_item": "Example Item",
+
+  "iawezlord.configuration.title": "IA-Wezlord Configs",
+  "iawezlord.configuration.section.iawezlord.common.toml": "IA-Wezlord Configs",
+  "iawezlord.configuration.section.iawezlord.common.toml.title": "IA-Wezlord Configs",
+  "iawezlord.configuration.items": "Item List",
+  "iawezlord.configuration.logDirtBlock": "Log Dirt Block",
+  "iawezlord.configuration.magicNumberIntroduction": "Magic Number Text",
+  "iawezlord.configuration.magicNumber": "Magic Number"
+}
