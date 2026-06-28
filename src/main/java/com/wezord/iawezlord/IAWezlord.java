@@ -3,6 +3,7 @@ package com.wezord.iawezlord;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.wezord.iawezlord.commands.SpawnRLAgentCommand;
 import com.wezord.iawezlord.ia.entity.RLAgentEntity;
 import com.wezord.iawezlord.ia.registry.EntityRegistry;
 import com.wezord.iawezlord.registry.ModAttributes;
@@ -31,6 +32,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -101,6 +103,7 @@ public class IAWezlord {
         
         NeoForge.EVENT_BUS.addListener(this::onPlayerJoin);
         
+        NeoForge.EVENT_BUS.addListener(SpawnRLAgentCommand::register);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
