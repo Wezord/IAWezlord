@@ -1,5 +1,5 @@
 package com.wezord.iawezlord.ia.agent;
 
-public class RLagent {
+public class RLAgent {
 
 }

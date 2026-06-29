@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import com.wezord.iawezlord.commands.SpawnRLAgentCommand;
 import com.wezord.iawezlord.ia.entity.RLAgentEntity;
-import com.wezord.iawezlord.ia.registry.EntityRegistry;
 import com.wezord.iawezlord.registry.ModAttributes;
 import com.wezord.iawezlord.registry.ModEntities;
 import com.wezord.iawezlord.registry.ModRenderers;
@@ -21,9 +20,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -32,8 +29,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -112,17 +107,13 @@ public class IAWezlord {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
     
-    private void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntityRegistry.RL_AGENT.get(), RLAgentEntity.createAttributes().build());
-    }
-    
     private void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
 
         if(event.getEntity().level().isClientSide())
             return;
 
         RLAgentEntity agent =
-            EntityRegistry.RL_AGENT.get().create(event.getEntity().level(), EntitySpawnReason.LOAD);
+            ModEntities.RL_AGENT.get().create(event.getEntity().level(), EntitySpawnReason.LOAD);
 
         agent.moveOrInterpolateTo(event.getEntity().position());
 

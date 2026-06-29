@@ -1,9 +1,9 @@
 package com.wezord.iawezlord.commands;
 
 import com.mojang.brigadier.Command;
-import com.mojang.brigadier.CommandDispatcher;
 import com.wezord.iawezlord.ia.entity.RLAgentEntity;
-import com.wezord.iawezlord.ia.registry.EntityRegistry;
+import com.wezord.iawezlord.registry.ModEntities;
+
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
@@ -28,7 +28,7 @@ public class SpawnRLAgentCommand {
         }
         
         RLAgentEntity agent = new RLAgentEntity(
-            EntityRegistry.RL_AGENT.get(),
+            ModEntities.RL_AGENT.get(),
             source.getLevel()
         );
         
